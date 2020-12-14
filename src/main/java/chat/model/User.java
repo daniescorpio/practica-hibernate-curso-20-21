@@ -6,18 +6,25 @@ import java.util.Set;
 
 /**
  * Modela un usuario. Por favor, revise detenidamente la clase y complete las partes omitidas
- * atendiendo a los comentarios indicados mediante @TODO
+ * atendiendo a los comentarios indicados mediante @TODO_
  */
-// @TODO completar las anotaciones de la clase
+@Entity
+@Table(name = "user")
 public class User {
 
-    // @TODO completar las anotaciones del atributo id (autogenerado)
+    @Id
+    @GeneratedValue
+    @Column(name = "id")
+    private Long id;
 
-    // @TODO completar las anotaciones del atributo username
+    @Column(name = "username")
+    private String username;
 
-    // @TODO completar las anotaciones del atributo chatRooms
+    @OneToMany(mappedBy = "creator", cascade = CascadeType.ALL)
+    private Set<ChatRoom> chatRooms;
 
-    // @TODO completar las anotaciones del atributo messages
+    @OneToMany(mappedBy = "creator", cascade = CascadeType.ALL)
+    private Set<Message> messages;
 
     public User () {
 
